@@ -5,3 +5,7 @@
 /* .custom-color {
   color: red;
 } */
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
