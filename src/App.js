@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { 
+import {
   Home
 } from './pages'
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         </Route>
         <Route path="/scan">
           {/* <Scan /> */}
+        </Route>
+        <Route path='/register'>
+          <Register />
         </Route>
       </Switch>
     </Router>
