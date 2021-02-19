@@ -1,13 +1,19 @@
-import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { GuardProvider, GuardedRoute } from "react-router-guards";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 
 function App() {
-  return <Router>
-    <Switch>
-      
-    </Switch>
-  </Router>;
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/scan">
+          {/* <Scan /> */}
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
