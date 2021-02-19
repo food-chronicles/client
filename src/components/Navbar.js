@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Navbar () {
   return (
     <>
@@ -14,8 +16,8 @@ export default function Navbar () {
   <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
     <nav>
       <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-        <li><a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-900 hover:border-blue-900" href="#">Home</a></li>
-        <li><a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-900 hover:border-blue-900" href="#">Scan Now</a></li>
+        <li><Link to= {'/'} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-900 hover:border-blue-900">Home</Link></li>
+        <li><Link to= {'/scan'} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-900 hover:border-blue-900">Scan Now</Link></li>
         <li><a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-900 hover:border-blue-900" href="#">About</a></li>
       </ul>
     </nav>

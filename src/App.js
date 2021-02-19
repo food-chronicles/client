@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { 
-  Home
+  Home,
+  Scan
 } from './pages'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/scan">
-          {/* <Scan /> */}
+          <Scan />
         </Route>
       </Switch>
     </Router>
