@@ -9,3 +9,28 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.logo-fc {
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 54px;
+}
+
+.logo-food-color {
+  color: #16ABFF;
+}
+
+.form-text {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #16ABFF;
+}
+
+.button-form {
+  background-color: #16ABFF !important;
+  border-radius: 5px;
+  color: white;
+}
