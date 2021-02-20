@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import HistoryCard from '../components/HistoryCard'
+import FooterPage from '../components/Footer'
 import QrReader from 'react-qr-reader'
 import { useState } from 'react'
 
@@ -20,7 +21,7 @@ export default function Scan () {
       <div className="container mx-auto px-4 mt-4 mb-10">
       <div className="ml-6 bg-gray-100 rounded-lg mr-5">
         <QrReader
-          delay={300}
+          delay={100}
           onError={handleError}
           onScan={handleScan}
           style={{ width: '100%' }}
@@ -30,8 +31,8 @@ export default function Scan () {
         </h1>
       </div>
     </div>
-      
-      <HistoryCard />
+    <HistoryCard />
+    <FooterPage />
     </>
   )
 }
