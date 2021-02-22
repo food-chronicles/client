@@ -12,8 +12,7 @@ export const register = (data) => {
                 password: data.password,
                 email: data.email,
                 company_name: data.company_name,
-                category: data.category,
-                history: data.history
+                category: data.category
             }
             const response = await axios({
                 method: 'POST',

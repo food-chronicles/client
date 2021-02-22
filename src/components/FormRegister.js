@@ -39,8 +39,7 @@ const Form = () => {
       password,
       email,
       company_name,
-      category,
-      history: []
+      category
     }
     dispatch(register(payload))
     console.log(payload);
