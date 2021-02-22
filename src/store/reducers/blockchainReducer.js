@@ -1,5 +1,5 @@
 const initialState = {
-
+  product: []
 }
 
 const blockchainReducer = (state = initialState, action) => {

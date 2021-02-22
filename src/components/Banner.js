@@ -2,7 +2,7 @@ import homeBanner from '../assets/home-banner.png'
 
 export default function Banner () {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xs:grid-cols-2 mt-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xs:grid-cols-2 xl:grid-cols-2 xl2:grid-cols-2 mt-12 md:grid-cols-1">
       <div className="container mx-auto px-12">
         <div className="justify-center mr-10">
           <img className="pl-12" src={ homeBanner } alt="Home Banner"/>
