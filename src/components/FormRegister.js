@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { register } from '../store/actions/userAction'
 
 const Form = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-  const [company, setCompany] = useState('')
+  const [company_name, setCompany] = useState('')
   const [category, setCategory] = useState('')
+
+  const dispatch = useDispatch()
 
   const handleUsername = (e) => {
     setUsername(e.target.value)
@@ -31,8 +36,13 @@ const Form = () => {
     e.preventDefault()
     let payload = {
       username,
-      password
+      password,
+      email,
+      company_name,
+      category,
+      history: []
     }
+    dispatch(register(payload))
     console.log(payload);
   }
 
@@ -59,7 +69,9 @@ const Form = () => {
                 <label className='form-text mr-2 font-bold text-lg' for="category">category</label>
                 <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleCategory} type="text" name="category" id="category" />
               </div>
-              <button className='button-form p-2 rounded-lg' type="submit">Register</button>
+              <Link to='/done'>
+                <button className='button-form p-2 rounded-lg' type="submit">Register</button>
+              </Link>
           </form>
     </div>
   );

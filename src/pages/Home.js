@@ -1,3 +1,4 @@
+import React from 'react'
 import Navbar from '../components/Navbar'
 import homeBanner from '../assets/home-banner.png'
 
