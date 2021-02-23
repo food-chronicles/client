@@ -1,7 +1,5 @@
 import axios from 'axios'
-export function template () {
-
-}
+import { successToaster, errorToaster } from "../../utils/toaster";
 
 export const register = (data) => {
     try {
@@ -12,8 +10,7 @@ export const register = (data) => {
                 password: data.password,
                 email: data.email,
                 company_name: data.company_name,
-                category: data.category,
-                history: data.history
+                category: data.category
             }
             const response = await axios({
                 method: 'POST',
@@ -21,10 +18,17 @@ export const register = (data) => {
                 data: payload
             }
             )
-            console.log(payload, 'from redux');
             return response
         }
     } catch (error) {
+        errorToaster("Oops!", error.message)
         console.log(error)
     }
+}
+
+function setError(error) {
+    return {
+      type: "SET_ERROR",
+      payload: error,
+    };
 }

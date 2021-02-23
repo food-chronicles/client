@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { register } from '../store/actions/userAction'
+import { successToaster, errorToaster } from "../utils/toaster";
 
 const Form = () => {
   const [username, setUsername] = useState('')
@@ -34,16 +35,36 @@ const Form = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
+    if (!username) {
+      return errorToaster("Missing field!", "Username is required");
+    }
+
+    if (!password) {
+      return errorToaster("Missing field!", "Password is required");
+    }
+
+    if (!email) {
+      return errorToaster("Missing field!", "Email must be uploaded");
+    }
+
+    if (!company_name) {
+      return errorToaster("Missing field!", "Company Name must be uploaded");
+    }
+
+    if (!category) {
+      return errorToaster("Missing field!", "Category must be uploaded");
+    }
+
     let payload = {
       username,
       password,
       email,
       company_name,
-      category,
-      history: []
+      category
     }
+
     dispatch(register(payload))
-    console.log(payload);
+    successToaster('Success', 'Registraion Complete')
   }
 
   return (
@@ -51,23 +72,27 @@ const Form = () => {
           <form className='w-full' action='' onSubmit={handleLogin}>
               <div className='flex flex-col w-full text-left mb-4'>
                 <label className='form-text mr-2 font-bold text-lg' for="username">Username</label>
-                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleUsername} type="text" name="username" id="username" />
+                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleUsername} type="text" name="username" id="username" required />
               </div>
               <div className='flex flex-col text-left mb-4'>
                 <label className='form-text mr-3 font-bold text-lg' for="password">Password</label>
-                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handlePassword} type="password" name="password" id="password" />
+                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handlePassword} type="password" name="password" id="password" required />
               </div>
               <div className='flex flex-col w-full text-left mb-4'>
                 <label className='form-text mr-2 font-bold text-lg' for="email">Email</label>
-                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleEmail} type="text" name="email" id="email" />
+                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleEmail} type="text" name="email" id="email" required />
               </div>
               <div className='flex flex-col w-full text-left mb-4'>
                 <label className='form-text mr-2 font-bold text-lg' for="company">Company Name</label>
-                <input className='border border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleCompany} type="text" name="company" id="company" />
+                <input className='border border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleCompany} type="text" name="company" id="company" required />
               </div>
               <div className='flex flex-col w-full text-left mb-4'>
                 <label className='form-text mr-2 font-bold text-lg' for="category">category</label>
-                <input className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleCategory} type="text" name="category" id="category" />
+                <select className='border w-full border-blue-400 rounded-md py-2 px-3 text-grey-darknest' onChange={handleCategory} name="category" id="category">
+                  <option value="Producer">Producer</option>
+                  <option value="Manufacture">Manufacture</option>
+                  <option value="Retail">Retail</option>
+                </select>
               </div>
               <Link to='/done'>
                 <button className='button-form p-2 rounded-lg' type="submit">Register</button>
