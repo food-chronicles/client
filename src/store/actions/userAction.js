@@ -1,7 +1,5 @@
 import axios from 'axios'
-export function template () {
-
-}
+import { successToaster, errorToaster } from "../../utils/toaster";
 
 export const register = (data) => {
     try {
@@ -20,10 +18,17 @@ export const register = (data) => {
                 data: payload
             }
             )
-            console.log(payload, 'from redux');
             return response
         }
     } catch (error) {
+        errorToaster("Oops!", error.message)
         console.log(error)
     }
+}
+
+function setError(error) {
+    return {
+      type: "SET_ERROR",
+      payload: error,
+    };
 }
