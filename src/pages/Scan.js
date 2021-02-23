@@ -3,9 +3,12 @@ import HistoryCard from '../components/HistoryCard'
 import FooterPage from '../components/Footer'
 import QrReader from 'react-qr-reader'
 import { useState } from 'react'
+import { useHistory } from "react-router-dom";
 
 export default function Scan () {
+  const history = useHistory();
   const [ result, setResult ] = useState('No result')
+
   const dummyData = {
     "chain": [{
         "index": 0,
@@ -56,8 +59,12 @@ export default function Scan () {
     "__v": 0
 }
 
-  const handleScan = data => {
-    if (data) setResult(data)
+  const handleScan = (data) => {
+    if (data) {
+      const id = data.split('/')[data.split('/').length - 1]
+      setResult(id)
+      history.push('/product/' + id);
+    }
   }
 
   const handleError = err => {

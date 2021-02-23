@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { 
   Home,
-  Scan
+  Scan,
+  Detail
 } from './pages'
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
         </Route>
         <Route path="/scan">
           <Scan />
+        </Route>
+        <Route path="/product/:id">
+          <Detail />
         </Route>
       </Switch>
     </Router>
