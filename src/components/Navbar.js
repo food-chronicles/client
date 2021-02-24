@@ -6,7 +6,7 @@ export default function Navbar () {
     <>
     <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
     <div className="flex-1 flex justify-between items-center">
-        <Link to="/" className="w-64">
+        <Link to="/" className="w-32 sm:w-64">
             <img src={fc_logo_sm}></img>
             {/* <p className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-400">
               Food <span className="text-blue-900">Chronicles</span>
