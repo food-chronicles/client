@@ -1,11 +1,10 @@
-/* global google */
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QRCode from "qrcode.react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../store/actions/blockchainAction";
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Lottie from "lottie-react";
+import LoadingBall from "../assets/4316-loading-gaocaisheng.json";
 import {
   GoogleMap,
   LoadScript,
@@ -13,19 +12,14 @@ import {
   InfoWindow,
   Polyline,
 } from "@react-google-maps/api";
-import LoadingBall from "../assets/4316-loading-gaocaisheng.json";
-import Lottie from "lottie-react";
 import { dateFormatLong } from "../utils/dateFormat";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const containerStyle = {
-  width: '100%',
-  height: '400px'
-};
-
-const center = {
-  lat: -0.5728859,
-  lng: 120.0487244
+  width: "100%",
+  height: "400px",
 };
 
 const style = {
@@ -33,25 +27,28 @@ const style = {
   width: 500,
 };
 
-export default function Detail () {   
-  const { id } = useParams()
-  const dispatch = useDispatch()
+function ProductDetails() {
+  const params = useParams();
+  const dispatch = useDispatch();
+  const blockchainId = params.id;
   const { blockchainDetail, qrCodeLink, isLoading, error } = useSelector(
     (state) => state.blockchain
-  )
+  );
 
-  const [ markers, setMarkers ] = useState([])
-  const [selected, setSelected] = useState({})
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState({});
   const onSelect = (item) => {
-    setSelected(item)
-  }
+    setSelected(item);
+    console.log(selected, "ini yang dipilih");
+  };
 
   useEffect(() => {
-    dispatch(getDetails(id))
-    setMarkers(blockchainDetail.chain.map(locationData => {
-        return locationData.location
-      }))
-  }, [blockchainDetail])
+    setMarkers(
+      blockchainDetail.chain.map((locationData) => {
+        return locationData.location;
+      })
+    );
+  }, [blockchainDetail]);
 
   const mapCenter = {
     lat:
@@ -62,17 +59,17 @@ export default function Detail () {
         ?.longitude,
   };
 
+  useEffect(() => {
+    dispatch(getDetails(blockchainId));
+  }, []);
+
   if (isLoading) {
     return (
       <div className="container flex items-center justify-center h-screen">
-        <p>
-          <Lottie animationData={LoadingBall} style={style} />;
-        </p>
-        ;
+        <Lottie animationData={LoadingBall} style={style} />
       </div>
     );
   }
-
   if (error) {
     return (
       <div className="container mx-auto p-6 text-center">
@@ -80,7 +77,6 @@ export default function Detail () {
       </div>
     );
   }
-
   return (
     <>
     <Navbar />
@@ -98,15 +94,18 @@ export default function Detail () {
             <h1 className="text-gray-900 font-bold text-2xl leading-8 my-1">
               {blockchainDetail.name}
             </h1>
+            {/* <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">
+              {blockchainDetail._id}
+            </p> */}
             <div>
-              <span className="text-gray-600 font-lg text-semibold leading-6">
+              <span className="text-gray-500 font-lg text-semibold leading-6">
                 Created at:{" "}
               </span>
               <span className="text-bold text-gray-900">
                 {dateFormatLong(blockchainDetail?.chain[0]?.timestamp)}
               </span>
             </div>
-            <h3 className="text-gray-600 font-lg text-semibold leading-6">
+            <h3 className="text-gray-500 font-lg text-semibold leading-6">
               Last updated:{" "}
               <span className="text-bold text-gray-900">
                 {dateFormatLong(
@@ -121,15 +120,18 @@ export default function Detail () {
         <div className="w-full md:w-3/12 mx-2 self-center flex justify-center">
           <div className="mx-auto">
             <QRCode
-              value={"http://localhost:3000/product/" + blockchainDetail._id}
+              value={
+                process.env.REACT_APP_CLIENT_URL +
+                "/product/" +
+                blockchainDetail._id
+              }
             />
           </div>
         </div>
       </div>
 
       <h1 className="form-text font-bold text-2xl text-center mb-4">History</h1>
-      <div className="text-center">
-      </div>
+
       <div className="flex flex-col md:flex-row gap-4 no-wrap md:mx-2 mb-10">
         {/* Bagian Kiri */}
         <div className="w-full md:w-2/3 md:mx-2 mb-5 md:mb-0">
@@ -161,7 +163,7 @@ export default function Detail () {
                       </small>
                       <div className="my-2">
                         <h3 className="text-2xl font-semibold">
-                          {history.user.company_name}
+                          { history.user.company_name }
                         </h3>
                         <p className="text-gray-500">{history.user.category}</p>
                       </div>
@@ -274,8 +276,21 @@ export default function Detail () {
           </div>
         )}
       </div>
+      {/* <p>
+        {JSON.stringify(
+          blockchainDetail.chain.slice(1).map((stop) => {
+            return {
+              lat: stop.location.latitude,
+              lng: stop.location.longitude,
+            };
+          })
+        )}
+      </p> */}
+
+      {/* {JSON.stringify(blockchainDetail.chain, null, 4)} */}
     </div>
-    <Footer />
     </>
-  )
+  );
 }
+
+export default ProductDetails;

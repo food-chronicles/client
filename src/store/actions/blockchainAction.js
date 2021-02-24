@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { successToaster, errorToaster } from "../../utils/toaster";
+const serverUrl = process.env.REACT_APP_SERVER_URL
 
 export function getDetails(id) {
 return async (dispatch) => {
     try {
-      let details = await axios.get(`http://localhost:4000/product/${id}`)
+      let details = await axios.get(`${serverUrl}/product/${id}`)
 
       dispatch(setLoading(false))
       dispatch(setError(null))
