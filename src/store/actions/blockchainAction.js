@@ -15,8 +15,12 @@ return async (dispatch) => {
       })
     } catch (error) {
       dispatch(setLoading(false))
+      errorToaster('Oops!', error.response.data.message)
+      if(error.response.status === 404){
+        dispatch(setError(404))
+        dispatch(setError(null))
+      }
       dispatch(setError(error))
-      errorToaster('Oops!', error.message)
     }
   }
 }
