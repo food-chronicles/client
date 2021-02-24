@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { successToaster, errorToaster } from "../../utils/toaster";
+const serverUrl = process.env.REACT_APP_SERVER_URL
 
 export function register (data) {
     return async (dispatch) => {
     try {
-      let url = `http://localhost:4000/register`
+      let url = `${serverUrl}/register`
       let payload = {
           username: data.username,
           password: data.password,
