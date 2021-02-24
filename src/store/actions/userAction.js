@@ -24,6 +24,10 @@ export function register (data) {
           type: 'SUCCESS_REGISTER',
           payload: true
         })
+        dispatch({
+          type: 'SUCCESS_REGISTER',
+          payload: false
+        })
       } catch (error) {
         errorToaster("Oops!", error.response.data.message)
       }

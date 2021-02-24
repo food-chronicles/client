@@ -9,3 +9,13 @@
 #menu-toggle:checked + #menu {
   display: block;
 }
+
+.button-form {
+  background-color: #16abff !important;
+  border-radius: 5px;
+  color: white;
+}
+
+.button-form:hover {
+  background-color: #003c68 !important;
+}
