@@ -22,7 +22,7 @@ export default function Navbar () {
       <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
         <li><Link to= {'/'} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-700 hover:border-blue-900">Home</Link></li>
         <li><Link to= {'/scan'} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-700 hover:border-blue-900">Scan Now</Link></li>
-        <li><a className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-700 hover:border-blue-900" href="#">About</a></li>
+        <li><Link to= {'/register'} className="lg:p-4 py-3 px-0 block border-b-2 border-transparent text-blue-700 hover:border-blue-900">Join Us</Link></li>
       </ul>
     </nav>
 

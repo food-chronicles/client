@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import { successToaster, errorToaster } from "../../utils/toaster";
 
 export function getDetails(id) {
