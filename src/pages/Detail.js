@@ -64,6 +64,9 @@ export default function Detail () {
 
   return (
     <>
+    {
+      JSON.stringify(blockchainDetail.chain[1].user.category)
+    }
     <Navbar />
     <div className="container mx-auto p-6">
       <p className="break-all">
@@ -183,9 +186,7 @@ export default function Detail () {
 
 
       <div className="ml-1 bg-gray-100 rounded-lg mr-1 mt-10 mb-7">
-      <LoadScript
-        googleMapsApiKey="AIzaSyAVwNowxQbWmi9tjKODixI_lXesf6ISsZw"
-      >
+      <LoadScript googleMapsApiKey="AIzaSyAVwNowxQbWmi9tjKODixI_lXesf6ISsZw">
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}

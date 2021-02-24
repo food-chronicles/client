@@ -2,14 +2,15 @@ import homeBanner from '../assets/home-banner.png'
 
 export default function Banner () {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xs:grid-cols-2 xl:grid-cols-2 xl2:grid-cols-2 mt-12 md:grid-cols-1">
+    <div className="grid grid-cols-1 sm:grid-cols-1 xs:grid-cols-2 xl:grid-cols-2 xl2:grid-cols-2 mt-12 md:grid-cols-2 justify-center">
       <div className="container mx-auto px-12">
         <div className="justify-center mr-10">
           <img className="pl-12" src={ homeBanner } alt="Home Banner"/>
         </div>
       </div>
-       <div className="container mx-auto px-12 mt-6 mb-10 content-end">
-          <h1 className="text-3xl max-w-md text-blue-900 ml-2 leading-tight">
+
+       <div className="container mx-auto px-12 mt-6 mb-10 flex justify-center flex-col max-w-xl">
+          <h1 className="text-3xl text-blue-900 ml-2 leading-tight  ">
           Are you sure that what you eat is 
           what you get? Find the truth in
           our app.
