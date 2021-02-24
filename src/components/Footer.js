@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function FooterPage() {
+export default function Footer() {
   return (
     <footer class="footer bg-gray-50 relative pt-1m t-5 border-b-2 border-blue-700">
       <div class="container mx-auto px-6 pt-2">

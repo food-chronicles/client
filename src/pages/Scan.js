@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import HistoryCard from "../components/HistoryCard";
-import FooterPage from "../components/Footer";
+import Footer from "../components/Footer";
 import QrReader from "react-qr-reader";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ export default function Scan() {
   };
 
   return (
-    <>
+      <div className="flex flex-col h-screen justify-between">
       <Navbar />
       <div className="container mx-auto px-4 mt-4 mb-10">
         <div className="mx-auto max-w-lg p-6 bg-gray-100 my-10 rounded-lg shadow-xl">
@@ -43,7 +43,7 @@ export default function Scan() {
         </h1> */}
         </div>
       </div>
-      <FooterPage />
-    </>
+      <Footer />
+    </div>
   );
 }

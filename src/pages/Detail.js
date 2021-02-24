@@ -78,7 +78,7 @@ function ProductDetails() {
     );
   }
   return (
-    <>
+    <div className="flex flex-col h-screen justify-between">
     <Navbar />
     <div className="container mx-auto p-6">
       <p className="break-all">
@@ -289,7 +289,8 @@ function ProductDetails() {
 
       {/* {JSON.stringify(blockchainDetail.chain, null, 4)} */}
     </div>
-    </>
+    <Footer />
+    </div>
   );
 }
 
