@@ -183,24 +183,24 @@ export default function Detail () {
 
 
       <div className="ml-1 bg-gray-100 rounded-lg mr-1 mt-10 mb-7">
-        <LoadScript
-      googleMapsApiKey="AIzaSyAVwNowxQbWmi9tjKODixI_lXesf6ISsZw"
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={4}
+      <LoadScript
+        googleMapsApiKey="AIzaSyAVwNowxQbWmi9tjKODixI_lXesf6ISsZw"
       >
-        {
-          markers.map((marker) => (
-            <Marker
-              key={ marker.index }
-              position={{ lat: Number(marker.latitude), lng: Number(marker.longitude) }}
-            />
-          ))
-        }
-        <></>
-      </GoogleMap>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={4}
+          >
+          {
+            markers.map((marker) => (
+              <Marker
+                key={ marker.index }
+                position={{ lat: Number(marker.latitude), lng: Number(marker.longitude) }}
+              />
+            ))
+          }
+            <></>
+          </GoogleMap>
     </LoadScript>
       </div>
     </div>
